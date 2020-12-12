@@ -6,6 +6,7 @@ const fileInput = require("./file-input");
 const footer = require("./footer");
 const navigation = require("./navigation");
 const password = require("./password");
+const roleButton = require("./role-button");
 const search = require("./search");
 const skipnav = require("./skipnav");
 const tooltip = require("./tooltip");
@@ -25,6 +26,7 @@ module.exports = {
   footer,
   navigation,
   password,
+  roleButton,
   search,
   skipnav,
   timePicker,
