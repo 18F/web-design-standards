@@ -225,7 +225,8 @@ const preventInvalidFiles = (e, fileInputEl, instructions, dropTarget) => {
       removeOldPreviews(dropTarget, instructions);
       fileInputEl.value = ""; // eslint-disable-line no-param-reassign
       dropTarget.insertBefore(errorMessage, fileInputEl);
-      errorMessage.innerHTML = `This is not a valid file type.`;
+      errorMessage.innerHTML =
+        fileInputEl.dataset.errormessage || `This is not a valid file type.`
       errorMessage.classList.add(ACCEPTED_FILE_MESSAGE_CLASS);
       dropTarget.classList.add(INVALID_FILE_CLASS);
       e.preventDefault();
