@@ -10,6 +10,7 @@
 
 .usa-input--error {
   @include u-border($theme-input-state-border-width, "error-dark");
+  padding: calc(#{units(1)} - #{units($theme-input-state-border-width)});
 }
 
 // Input prefixes / suffixes

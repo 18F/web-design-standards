@@ -1,0 +1,129 @@
+<main class="grid-container">
+  <h1>Testing alerts on dropdown menus  - <small><a href="https://github.com/uswds/uswds/issues/4192">issue #4192</a></small></h1>
+  <p class="measure-3">
+    The bottom of drop down menu text gets cutoff 
+  </p>
+  <div class="grid-row grid-gap-6 margin-top-4">
+    <div class="tablet:grid-col-6">
+    <h2>Dropdown</h2>
+      <!-- Dropdown w/ error -->
+      
+      <div class="usa-form-group usa-form-group--error">
+        <label class="usa-label usa-label--error" for="input-error">Dropdown error</label>
+        <span class="usa-error-message" id="select-input-error-message" role="alert">Helpful error message</span>
+        <select class="usa-select usa-input--error" id="select-error" name="select-error" type="options"
+          aria-describedby="input-error-message">
+            <option value>- Select -</option>
+              <option value="value1">Option A</option>
+              <option value="value2">Option B</option>
+              <option value="value3">Option C</option>
+        </select>
+      </div>
+
+    <h2>Other Input</h2>
+      <div class="usa-form-group usa-form-group--error">
+        <label class="usa-label usa-label--error" for="input-error-2">Text input error</label>
+        <span class="usa-error-message" id="input-error-message-2">Helpful error message</span>
+        <input class="usa-input usa-input--error" id="input-error-2" name="input-error-2" type="text"
+          aria-describedby="input-error-message-2">
+      </div>
+
+        <div class="usa-form-group usa-form-group--error">
+          <span class="usa-error-message" id="input-error-message-2">Helpful error message</span>
+          <textarea class="usa-textarea usa-input--error" id="input-type-textarea" name="input-type-textarea"></textarea>
+        </div>
+
+      <div>
+
+<label class="usa-label" for="{{ comboBox.name }}">{{ comboBox.label }}</label>
+<div class="usa-combo-box{% if comboBox.utilities %} {{ comboBox.utilities }}{% endif %} usa-input--error"
+  {% if comboBox.defaultValue %} data-default-value="{{ comboBox.defaultValue }}"{% endif %}
+  {% if comboBox.placeholder %} data-placeholder="{{ comboBox.placeholder }}"{% endif %}
+>
+  <select
+    class="usa-select "
+    name="{{ comboBox.name }}"
+    id="{% if comboBox.id %}{{ comboBox.id }}{% else %}{{ comboBox.name }}{% endif %}"
+    {% if comboBox.disabled %} disabled{% endif %}
+    {% if comboBox.required %} required{% endif %}
+  >
+    <option value>Select a fruit</option>
+    <option value="apple">Apple</option>
+    <option value="apricot">Apricot</option>
+    <option value="avocado">Avocado</option>
+    <option value="banana">Banana</option>
+    <option value="blackberry">Blackberry</option>
+    <option value="blood orange">Blood orange</option>
+    <option value="blueberry">Blueberry</option>
+    <option value="boysenberry">Boysenberry</option>
+    <option value="breadfruit">Breadfruit</option>
+    <option value="buddhas hand citron">Buddha's hand citron</option>
+    <option value="cantaloupe">Cantaloupe</option>
+    <option value="clementine">Clementine</option>
+    <option value="crab apple">Crab apple</option>
+    <option value="currant">Currant</option>
+    <option value="cherry">Cherry</option>
+    <option value="custard apple">Custard apple</option>
+    <option value="coconut">Coconut</option>
+    <option value="cranberry">Cranberry</option>
+    <option value="date">Date</option>
+    <option value="dragonfruit">Dragonfruit</option>
+    <option value="durian">Durian</option>
+    <option value="elderberry">Elderberry</option>
+    <option value="fig">Fig</option>
+    <option value="gooseberry">Gooseberry</option>
+    <option value="grape">Grape</option>
+    <option value="grapefruit">Grapefruit</option>
+    <option value="guava">Guava</option>
+    <option value="honeydew melon">Honeydew melon</option>
+    <option value="jackfruit">Jackfruit</option>
+    <option value="kiwifruit">Kiwifruit</option>
+    <option value="kumquat">Kumquat</option>
+    <option value="lemon">Lemon</option>
+    <option value="lime">Lime</option>
+    <option value="lychee">Lychee</option>
+    <option value="mandarine">Mandarine</option>
+    <option value="mango">Mango</option>
+    <option value="mangosteen">Mangosteen</option>
+    <option value="marionberry">Marionberry</option>
+    <option value="nectarine">Nectarine</option>
+    <option value="orange">Orange</option>
+    <option value="papaya">Papaya</option>
+    <option value="passionfruit">Passionfruit</option>
+    <option value="peach">Peach</option>
+    <option value="pear">Pear</option>
+    <option value="persimmon">Persimmon</option>
+    <option value="plantain">Plantain</option>
+    <option value="plum">Plum</option>
+    <option value="pineapple">Pineapple</option>
+    <option value="pluot">Pluot</option>
+    <option value="pomegranate">Pomegranate</option>
+    <option value="pomelo">Pomelo</option>
+    <option value="quince">Quince</option>
+    <option value="raspberry">Raspberry</option>
+    <option value="rambutan">Rambutan</option>
+    <option value="soursop">Soursop</option>
+    <option value="starfruit">Starfruit</option>
+    <option value="strawberry">Strawberry</option>
+    <option value="tamarind">Tamarind</option>
+    <option value="tangelo">Tangelo</option>
+    <option value="tangerine">Tangerine</option>
+    <option value="ugli fruit">Ugli fruit</option>
+    <option value="watermelon">Watermelon</option>
+    <option value="white currant">White currant</option>
+    <option value="yuzu">Yuzu</option>
+  </select>
+</div>
+
+
+<div class="usa-form-group">
+  <label class="usa-label" id="appointment-time-label" for="appointment-time">Appointment time</label>
+  <div class="usa-hint" id="appointment-time-hint">hh:mm</div>
+  <div class="usa-time-picker usa-input--error">
+    <input class="usa-input" id="appointment-time" name="appointment-time" type="text" aria-describedby="appointment-time-label appointment-time-hint">
+  </div>
+</div>
+
+    </div>
+  </div>
+</main>
