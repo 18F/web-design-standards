@@ -80,15 +80,14 @@ $accordion-border: units($theme-accordion-border-width) solid
   }
 }
 
-.usa-accordion__heading,
-// kludge to override .usa-prose styles
-// TODO: work this into a mixin
-.usa-prose .usa-accordion__heading {
-  @include typeset($theme-accordion-font-family, $theme-body-font-size, 1);
-  margin: 0;
+@include override-prose {
+  .usa-accordion__heading {
+    @include typeset($theme-accordion-font-family, $theme-body-font-size, 1);
+    margin: 0;
 
-  &:not(:first-child) {
-    margin-top: units(1);
+    &:not(:first-child) {
+      margin-top: units(1);
+    }
   }
 }
 
@@ -105,6 +104,20 @@ $accordion-border: units($theme-accordion-border-width) solid
   > *:last-child {
     margin-bottom: 0;
   }
+
+  @media print {
+    display: initial;
+  }
+}
+
+.usa-accordion__controls {
+  @include u-justify-content($theme-accordion-controls-alignment);
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.usa-accordion__control-all {
+  @include button-unstyled;
 }
 
 .usa-accordion__button {

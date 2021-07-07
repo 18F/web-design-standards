@@ -6,6 +6,8 @@ require("./element-hidden");
 require("./number-is-nan");
 // polyfills CustomEvent
 require("./custom-event");
+// polyfills forEach on nodelists
+require("./nodelist-foreach");
 // polyfills svg4everybody
 require("./svg4everybody");
 

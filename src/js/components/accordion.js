@@ -7,6 +7,7 @@ const { prefix: PREFIX } = require("../config");
 
 const ACCORDION = `.${PREFIX}-accordion, .${PREFIX}-accordion--bordered`;
 const BUTTON = `.${PREFIX}-accordion__button[aria-controls]`;
+const BUTTON_CONTROL_ALL = `.${PREFIX}-accordion__control-all`;
 const EXPANDED = "aria-expanded";
 const MULTISELECTABLE = "aria-multiselectable";
 
@@ -54,6 +55,33 @@ const toggleButton = (button, expanded) => {
 };
 
 /**
+ * Toggle the Collapse/Expand all text label.
+ * @param {HTMLElement} button
+ */
+const toggleText = (element) => {
+  let controlBtn = element;
+
+  const originalString = controlBtn.textContent.trim();
+  const startText = controlBtn.getAttribute("data-label--expanded");
+  const endText = controlBtn.getAttribute("data-label--collapsed");
+
+  controlBtn.textContent = (originalString === startText) ? endText : startText;
+}
+
+const toggleAll = (buttonAll) => {
+  const controlAllBtn = buttonAll.closest(BUTTON_CONTROL_ALL);
+  const accordion = controlAllBtn.closest(ACCORDION);
+  const buttons = accordion.querySelectorAll(BUTTON);
+
+  let accordionIsExpanded = controlAllBtn.getAttribute(EXPANDED) === "true";
+
+  toggleText(controlAllBtn);
+  controlAllBtn.setAttribute("aria-expanded", !accordionIsExpanded);
+  buttons.forEach((button) => toggle(button, !accordionIsExpanded));
+}
+
+
+/**
  * @param {HTMLButtonElement} button
  * @return {boolean} true
  */
@@ -80,6 +108,10 @@ const accordion = behavior(
           if (!isElementInViewport(this)) this.scrollIntoView();
         }
       },
+      [BUTTON_CONTROL_ALL](event) {
+        event.preventDefault();
+        toggleAll(this);
+      }
     },
   },
   {
@@ -94,7 +126,7 @@ const accordion = behavior(
     show: showButton,
     hide: hideButton,
     toggle: toggleButton,
-    getButtons: getAccordionButtons,
+    getButtons: getAccordionButtons
   }
 );
 

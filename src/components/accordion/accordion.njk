@@ -1,6 +1,17 @@
 <div class="usa-accordion{%
   if accordion.variant %} usa-accordion--{{ accordion.variant }}{% endif %}"{%
   if accordion.multiselectable == true %} aria-multiselectable="true"{% endif %}>
+  {% if accordion.controls %}
+  <div class="usa-accordion__controls" aria-label="Control all accordion items">
+    <button
+      class="usa-accordion__control-all"
+      aria-expanded="false"
+      data-label--expanded="{{ accordion.control_expanded_label }}"
+      data-label--collapsed="{{ accordion.control_collapsed_label }}">
+      {{ accordion.control_expanded_label }}
+    </button>
+  </div>
+  {% endif %}
   {% for item in accordion.items %}
       <!-- Use the accurate heading level to maintain the document outline -->
       <h4 class="usa-accordion__heading">

@@ -5,6 +5,8 @@ preview: "@uswds-framed"
 variants:
   - name: default
     label: Borderless
+    context:
+      accordion:
 
   - name: bordered
     notes: >
@@ -24,9 +26,19 @@ variants:
       accordion:
         id_prefix: m-
         multiselectable: true
+  - name: expand-collapse all
+    notes: >
+      You can add controls to expand/collapse all accordion items.
+    context:
+      accordion:
+        id_prefix: all-
 
+# Defaults
 context:
   accordion:
+    controls: true
+    control_expanded_label: Expand all sections
+    control_collapsed_label: Collapse all sections
     items:
       - title: First Amendment
         id: a1
