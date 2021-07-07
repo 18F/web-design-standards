@@ -74,7 +74,8 @@ $breadcrumb-back-icon-aspect: (
   @include unstyled-list;
   @include u-display("block");
   @include u-padding($theme-focus-width);
-  margin: units($theme-focus-width) * -1;
+  margin-left: units($theme-focus-width) * -1;
+  margin-right: units($theme-focus-width) * -1;
 }
 
 .usa-breadcrumb__list-item {
