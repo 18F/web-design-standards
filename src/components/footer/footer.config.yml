@@ -18,11 +18,12 @@ context:
       agency_name: <Name of Agency>
     contact_links:
       social_nav:
-        - Facebook
-        - Twitter
-        - YouTube
-        - Instagram
-        - RSS
+        - name: Facebook
+        - name: Twitter
+        - name: YouTube
+        - name: Instagram
+        - name: RSS
+          icon: rss_feed
       heading: <Agency Contact Center>
       address:
         phone: <(800) 555-GOVT>

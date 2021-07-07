@@ -2,7 +2,7 @@
 
 {% set contact_info = {
   'heading': secondary_section.contact_links.heading | e,
-  'phone':  secondary_section.contact_links.address.phone | e ,
+  'phone':  secondary_section.contact_links.address.phone | e,
   'email': secondary_section.contact_links.address.email | e
 } %}
 
@@ -41,8 +41,11 @@
           <div class="usa-footer__social-links grid-row grid-gap-1">
             {% for item in secondary_section.contact_links.social_nav %}
               <div class="grid-col-auto">
-                <a class="usa-social-link usa-social-link--{{ item | lower }}" href="javascript:void(0);">
-                  <span>{{ item }}</span>
+                <a class="usa-social-link" href="javascript:void(0);">
+                  <img class="usa-social-link__icon"
+                    src="{{ uswds.path }}/img/usa-icons/{% if item.icon %}{{ item.icon }}{% else %}{{ item.name | lower }}{% endif %}.svg"
+                    alt="{{ item.name }}"
+                  />
                 </a>
               </div>
             {% endfor %}

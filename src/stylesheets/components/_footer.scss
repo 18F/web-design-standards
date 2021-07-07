@@ -202,36 +202,20 @@
 }
 
 .usa-social-link {
-  $background-height: units(4); // Height of icon within hit area.
   @include u-square($size-touch-target);
-  background-position: center center;
-  background-size: auto $background-height;
   background-color: color("black-transparent-10");
   display: inline-block;
+  padding: units(0.5);
 
-  span {
-    @include sr-only();
+  &:hover {
+    background-color: color("white");
   }
 }
 
-.usa-social-link--facebook {
-  @include add-background-svg("usa-icons/facebook");
-}
-
-.usa-social-link--twitter {
-  @include add-background-svg("usa-icons/twitter");
-}
-
-.usa-social-link--youtube {
-  @include add-background-svg("usa-icons/youtube");
-}
-
-.usa-social-link--instagram {
-  @include add-background-svg("usa-icons/instagram");
-}
-
-.usa-social-link--rss {
-  @include add-background-svg("usa-icons/rss_feed");
+.usa-social-link__icon {
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
 .usa-footer__address {

@@ -2,7 +2,7 @@
 
 {% set contact_info = {
   'heading': secondary_section.contact_links.heading | e,
-  'phone':  secondary_section.contact_links.address.phone | e ,
+  'phone':  secondary_section.contact_links.address.phone | e,
   'email': secondary_section.contact_links.address.email | e
 } %}
 
@@ -68,7 +68,7 @@
             {% for item in secondary_section.contact_links.social_nav %}
               <div class="grid-col-auto">
                 <a class="usa-social-link usa-social-link--{{ item | lower }}" href="javascript:void(0);">
-                  <span>{{ item }}</span>
+                  <span class="usa-social-link__icon usa-social-link__icon--{{ item | lower }}" role="img" aria-label="{{ item }}"></span>
                 </a>
               </div>
             {% endfor %}
