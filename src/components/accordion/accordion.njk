@@ -5,6 +5,7 @@
       <!-- Use the accurate heading level to maintain the document outline -->
       <h4 class="usa-accordion__heading">
         <button class="usa-accordion__button"
+          type="button"
           aria-expanded="{{ item.expanded | default('false') }}"
           aria-controls="{{ accordion.id_prefix }}{{ item.id }}">
           {{ item.title }}

@@ -32,7 +32,7 @@
         {%- endif %}
       </div>
       {% if not forced -%}
-      <button class="usa-button usa-modal__close" aria-label="{{ close_button.aria_label }}" data-close-modal>
+      <button type="button" class="usa-button usa-modal__close" aria-label="{{ close_button.aria_label }}" data-close-modal>
         {% if close_button.text -%}
           {{ close_button.text }}
         {% else -%}
