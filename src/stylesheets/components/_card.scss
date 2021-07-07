@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* TODO:
  * Add a way to change the flag breakpoint as a modifier/class?
  */
@@ -20,7 +22,7 @@
 .usa-card-group {
   @include u-display("flex");
   @include u-flex("column", "wrap", "align-stretch");
-  @include u-margin-x($theme-card-gap / -2);
+  @include u-margin-x(math.div($theme-card-gap, -2));
   @include at-media($theme-card-flag-min-width) {
     @include u-flex("row");
   }
@@ -54,7 +56,7 @@
   @include u-display("flex");
   @include u-height("full");
   @include u-flex("column");
-  @include u-margin-x($theme-card-gap / 2);
+  @include u-margin-x(math.div($theme-card-gap, 2));
   @include u-position("relative");
   @include u-radius($theme-card-border-radius);
 }
@@ -70,7 +72,7 @@
 // Header
 // ---------------------------------
 .usa-card__header {
-  @include u-padding-bottom($theme-card-padding-y / 2);
+  @include u-padding-bottom(math.div($theme-card-padding-y, 2));
   @include u-padding-top($theme-card-padding-perimeter);
   @include u-padding-x($theme-card-padding-perimeter);
 
@@ -121,7 +123,7 @@
 .usa-card__body {
   @include u-flex("fill");
   @include u-padding-x($theme-card-padding-perimeter);
-  @include u-padding-y($theme-card-padding-y / 2);
+  @include u-padding-y(math.div($theme-card-padding-y, 2));
   // IE 11
   flex-basis: auto;
 
@@ -143,7 +145,7 @@
 // ---------------------------------
 .usa-card__footer {
   @include u-padding-bottom($theme-card-padding-perimeter);
-  @include u-padding-top($theme-card-padding-y / 2);
+  @include u-padding-top(math.div($theme-card-padding-y, 2));
   @include u-padding-x($theme-card-padding-perimeter);
 }
 
@@ -279,10 +281,10 @@
 
     &.usa-card--header-first {
       .usa-card__header {
-        @include u-padding-bottom($theme-card-padding-y / 2);
+        @include u-padding-bottom(math.div($theme-card-padding-y, 2));
       }
       .usa-card__body {
-        @include u-padding-top($theme-card-padding-y / 2);
+        @include u-padding-top(math.div($theme-card-padding-y, 2));
       }
       .usa-card__media--inset {
         @include u-padding-top($theme-card-padding-perimeter);

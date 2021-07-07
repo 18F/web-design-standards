@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Default styles
 .usa-button-group {
   @include u-margin-y(0);
@@ -72,7 +74,7 @@
     &:first-child > .usa-button {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      margin-right: -(units($theme-button-stroke-width)) / 2;
+      margin-right: math.div(-(units($theme-button-stroke-width)), 2);
     }
 
     &:last-child > .usa-button {
@@ -83,15 +85,15 @@
       width: calc(100% + #{units($theme-button-stroke-width)});
 
       @include at-media("mobile-lg") {
-        margin-left: -(units($theme-button-stroke-width)) / 2;
+        margin-left: math.div(-(units($theme-button-stroke-width)), 2);
         width: auto;
       }
     }
 
     &:not(:first-child):not(:last-child) > .usa-button {
       border-radius: 0;
-      margin-right: -(units($theme-button-stroke-width)) / 2;
-      margin-left: -(units($theme-button-stroke-width)) / 2;
+      margin-right: math.div(-(units($theme-button-stroke-width)), 2);
+      margin-left: math.div(-(units($theme-button-stroke-width)), 2);
     }
 
     // Creates separators

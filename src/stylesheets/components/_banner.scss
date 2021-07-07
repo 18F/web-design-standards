@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $banner-context: "Banner";
 $banner-guidance-measure: 3;
 $banner-icon-colors: get-link-tokens-from-bg(
@@ -92,7 +94,7 @@ $banner-icon-close: (
 .usa-banner__lock-image {
   $lock-h: 64; // unitless height of svg
   $lock-w: 52; // unitless width of svg
-  $lock-aspect: $lock-w / $lock-h;
+  $lock-aspect: math.div($lock-w, $lock-h);
   $icon-height: 1.5ex; // height of the lock icon; use ex for resilience
 
   height: $icon-height;

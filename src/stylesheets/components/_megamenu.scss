@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin outer-megamenu {
   @include u-pin("y");
   background-color: color("primary-darker");
@@ -15,7 +17,7 @@
     flex: 1 1 auto;
     @include at-media($theme-header-min-width) {
       // needs this round() to avoid a compile bug
-      @include u-flex(round(12 / $theme-megamenu-columns));
+      @include u-flex(round(math.div(12, $theme-megamenu-columns)));
     }
   }
 }

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /*
 ========================================
 Functions
@@ -92,7 +94,7 @@ Remove the unit of a length
 
 @function strip-unit($number) {
   @if type-of($number) == "number" and not unitless($number) {
-    @return $number / ($number * 0 + 1);
+    @return math.div($number, $number * 0 + 1);
   }
 
   @return $number;
@@ -387,7 +389,7 @@ the desired final units (currently rem)
 */
 
 @function spacing-multiple($unit) {
-  $grid-to-rem: ($system-spacing-grid-base * $unit) / $root-font-size-equiv *
+  $grid-to-rem: math.div($system-spacing-grid-base * $unit, $root-font-size-equiv) *
     1rem;
 
   @return $grid-to-rem;
@@ -403,7 +405,7 @@ Converts a value in rem to a value in px
 
 @function rem-to-px($value-in-rem) {
   @if unit($value-in-rem) == "rem" {
-    $rem-to-px: ($value-in-rem / 1rem) * $root-font-size-equiv;
+    $rem-to-px: math.div($value-in-rem, 1rem) * $root-font-size-equiv;
     @return $rem-to-px;
   }
   @if unit($value-in-rem) != "px" {
@@ -423,7 +425,7 @@ queries
 */
 
 @function rem-to-user-em($grid-in-rem) {
-  $rem-to-user-em: ($grid-in-rem / 1rem) * 1em;
+  $rem-to-user-em: math.div($grid-in-rem, 1rem) * 1em;
 
   @return $rem-to-user-em;
 }
@@ -476,8 +478,8 @@ Converts a value in px to a value in rem
   @if not $pixels {
     @return false;
   }
-  $px-to-rem: ($pixels / $root-font-size-equiv) * 1rem;
-  $px-to-rem: round($px-to-rem * 100) / 100;
+  $px-to-rem: math.div($pixels, $root-font-size-equiv) * 1rem;
+  $px-to-rem: math.div(round($px-to-rem * 100), 100);
 
   @return $px-to-rem;
 }
@@ -496,7 +498,7 @@ to a set target
     @return false;
   }
 
-  $this-scale: $system-base-cap-height * strip-unit($scale) / $cap-height * 1px;
+  $this-scale: math.div($system-base-cap-height * strip-unit($scale), $cap-height) * 1px;
 
   @return px-to-rem($this-scale);
 }
@@ -571,9 +573,8 @@ a family and a line-height scale unit
 
   $this-cap: map-get($project-cap-heights, $family);
   $this-line-height: map-get($system-line-height, $scale);
-  $normalized-line-height: $this-line-height /
-    ($system-base-cap-height / $this-cap);
-  $normalized-line-height: round($normalized-line-height * 10) / 10;
+  $normalized-line-height: math.div($this-line-height, math.div($system-base-cap-height, $this-cap));
+  $normalized-line-height: math.div(round($normalized-line-height * 10), 10);
 
   @return $normalized-line-height;
 }
@@ -786,7 +787,7 @@ grid.
   }
 
   $numeric-eq: map-get($spacing-to-value, $gap-size);
-  $numeric-eq-half: inspect($numeric-eq / 2);
+  $numeric-eq-half: inspect(math.div($numeric-eq, 2));
 
   @if not map-has-key($spacing-to-token, $numeric-eq-half) {
     @error '`#{$gap-size}` is not a valid USWDS gap size token. '
@@ -854,7 +855,7 @@ Ex: columns(2) --> 6
   @if 12 % $number != 0 {
     @error '`#{$number}` must be a divisor of 12.';
   }
-  $columns: 12 / $number;
+  $columns: math.div(12, $number);
   @return $columns;
 }
 
@@ -949,7 +950,7 @@ Includes helper functions
     }
   } @else if $exponent < 0 {
     @for $i from 1 through -$exponent {
-      $value: $value / $number;
+      $value: math.div($value, $number);
     }
   }
 
@@ -981,7 +982,7 @@ Includes helper functions
 }
 
 @function exp-maclaurin($x, $n) {
-  @return (pow($x, $n) / factorial($n));
+  @return math.div(pow($x, $n), factorial($n));
 }
 
 @function exp($value) {
@@ -989,7 +990,7 @@ Includes helper functions
 }
 
 @function ln-maclaurin($x, $n) {
-  @return (pow(-1, $n + 1) / $n) * (pow($x - 1, $n));
+  @return math.div(pow(-1, $n + 1), $n) * (pow($x - 1, $n));
 }
 
 @function ln($value) {
@@ -1002,7 +1003,7 @@ Includes helper functions
 
   @return summation(
       get-function("ln-maclaurin"),
-      $value / pow(10, $ten-exp),
+      math.div($value, pow(10, $ten-exp)),
       1,
       100
     ) + $ten-exp * $ln-ten;
@@ -1022,12 +1023,12 @@ Includes helper functions
 
   @each $name, $value in $colors {
     $adjusted: 0;
-    $value: $value / 256;
+    $value: math.div($value, 256);
 
     @if $value < 0.03928 {
-      $value: $value / 12.92;
+      $value: math.div($value, 12.92);
     } @else {
-      $value: ($value + 0.055) / 1.055;
+      $value: math.div($value + 0.055, 1.055);
       $value: pow($value, 2.4);
     }
 
@@ -1041,7 +1042,7 @@ Includes helper functions
 
   $lum: (map-get($colors, "red") * 0.2126) +
     (map-get($colors, "green") * 0.7152) + (map-get($colors, "blue") * 0.0722);
-  $lum: round($lum * 1000) / 1000;
+  $lum: math.div(round($lum * 1000), 1000);
 
   @return $lum;
 }
@@ -1088,7 +1089,7 @@ Includes helper functions
       $result: $result * 10 + map-get($numbers, $character);
     } @else {
       $digits: $digits * 10;
-      $result: $result + map-get($numbers, $character) / $digits;
+      $result: $result + math.div(map-get($numbers, $character), $digits);
     }
   }
 
@@ -1373,7 +1374,7 @@ even non-token colors
         @return $this-grade;
       }
       @if ($lum > $this-grade-max) and ($lum < $next-grade-min) {
-        $custom-grade-midpoint: ($this-grade + $next-grade) / 2;
+        $custom-grade-midpoint: math.div($this-grade + $next-grade, 2);
         $custom-grade: $custom-grade-midpoint;
         @return $custom-grade;
       }

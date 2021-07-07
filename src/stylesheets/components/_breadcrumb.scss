@@ -1,3 +1,5 @@
+@use "sass:math";
+
 //
 // General Settings
 // =====================================
@@ -36,7 +38,7 @@ $breadcrumb-back-icon-aspect: (
 
 // Defines spacing so back icon is optically placed
 @mixin exdent-icon($dim: $breadcrumb-back-icon-aspect) {
-  $aspect: nth($dim, 1) / nth($dim, 2);
+  $aspect: math.div(nth($dim, 1), nth($dim, 2));
   $icon-width: $breadcrumb-icon-display-height * $aspect;
   padding-left: calc(#{$icon-width} + #{$breadcrumb-icon-spacing});
   text-indent: calc((#{$icon-width} + #{$breadcrumb-icon-spacing}) * -1);

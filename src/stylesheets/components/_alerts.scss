@@ -1,5 +1,7 @@
+@use "sass:math";
+
 $alert-slim-icon-size: units(3);
-$alert-icon-optical-factor: units($theme-alert-icon-size) / 6;
+$alert-icon-optical-factor: math.div(units($theme-alert-icon-size), 6);
 $alert-icon-optical-padding: units($theme-alert-padding-x) -
   $alert-icon-optical-factor;
 

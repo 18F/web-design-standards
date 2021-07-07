@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:list";
+
 @mixin display-icon($icon, $direction, $size, $margin, $hover) {
   &::#{$direction} {
     @include add-background-svg("#{$icon}");
@@ -74,7 +77,7 @@
   $filename-base: map-get($icon-object, "name");
   $svg-height: map-get($icon-object, "svg-height");
   $svg-width: map-get($icon-object, "svg-width");
-  $aspect: $svg-width / $svg-height;
+  $aspect: math.div($svg-width, $svg-height);
   $height: if(
     unitless(map-get($icon-object, "height")),
     units(map-get($icon-object, "height")),
@@ -123,9 +126,8 @@
     "usa-icons/#{$filename-base}.svg"
   );
 
-  $mask-props: url("#{$path}/usa-icons/#{$filename-base}.svg") no-repeat center /
-    #{$width} #{$height};
-  $image-props: url("#{$path}/#{$filename-ie11}") no-repeat center / #{$width} #{$height};
+  $mask-props: url("#{$path}/usa-icons/#{$filename-base}.svg") no-repeat list.slash(center, $width) #{$height};
+  $image-props: url("#{$path}/#{$filename-ie11}") no-repeat list.slash(center, $width) #{$height};
 
   // Default background shorthand for browsers that don't support mask or supports.
   background: $image-props;

@@ -142,18 +142,18 @@ Layout grid widths
 
 // prettier-ignore
 $system-layout-grid-widths: (
-  1: 100% * 1 / 12,
-  2: 100% * 2 / 12,
-  3: 100% * 3 / 12,
-  4: 100% * 4 / 12,
-  5: 100% * 5 / 12,
-  6: 100% * 6 / 12,
-  7: 100% * 7 / 12,
-  8: 100% * 8 / 12,
-  9: 100% * 9 / 12,
-  10: 100% * 10 / 12,
-  11: 100% * 11 / 12,
-  12: 100% * 12 / 12,
+  1: math.div(100% * 1, 12),
+  2: math.div(100% * 2, 12),
+  3: math.div(100% * 3, 12),
+  4: math.div(100% * 4, 12),
+  5: math.div(100% * 5, 12),
+  6: math.div(100% * 6, 12),
+  7: math.div(100% * 7, 12),
+  8: math.div(100% * 8, 12),
+  9: math.div(100% * 9, 12),
+  10: math.div(100% * 10, 12),
+  11: math.div(100% * 11, 12),
+  12: math.div(100% * 12, 12),
 );
 
 /*
@@ -512,6 +512,8 @@ $theme-color-grades: (
 Colors
 ----------------------------------------
 */
+
+@use "sass:math";
 
 @import "./system-tokens/red-cool";
 @import "./system-tokens/red";

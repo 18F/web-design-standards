@@ -1,3 +1,5 @@
+@use "sass:list";
+
 .usa-link {
   @include typeset-link;
 }
@@ -8,14 +10,14 @@
 
 .usa-link--external {
   @include external-link(
-    usa-icons-bg/launch--blue-60v,
-    usa-icons-bg/launch--blue-70v
+    list.slash(usa-icons-bg, launch--blue-60v),
+    list.slash(usa-icons-bg, launch--blue-70v)
   );
 
   &.usa-link--alt {
     @include external-link(
-      usa-icons-bg/launch--gray-5,
-      usa-icons-bg/launch--white
+      list.slash(usa-icons-bg, launch--gray-5),
+      list.slash(usa-icons-bg, launch--white)
     );
   }
 }

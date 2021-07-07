@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $step-indicator-label-margin-top: 1;
 $step-indicator-margin-bottom: 4;
 $step-indicator-header-margin-top: 4;
@@ -14,8 +16,8 @@ $step-indicator-counter-size-sm: 3;
   );
   background-color: color($step-indicator-background-color);
   margin-bottom: units($step-indicator-margin-bottom);
-  margin-left: units($theme-step-indicator-segment-gap) / -2;
-  margin-right: units($theme-step-indicator-segment-gap) / -2;
+  margin-left: math.div(units($theme-step-indicator-segment-gap), -2);
+  margin-right: math.div(units($theme-step-indicator-segment-gap), -2);
 
   @include at-media($theme-step-indicator-min-width) {
     @include u-margin-x(0);
@@ -33,8 +35,8 @@ $step-indicator-counter-size-sm: 3;
 .usa-step-indicator__segment {
   @include u-flex("fill");
   counter-increment: usa-step-indicator;
-  margin-left: units($theme-step-indicator-segment-gap) / 2;
-  margin-right: units($theme-step-indicator-segment-gap) / 2;
+  margin-left: math.div(units($theme-step-indicator-segment-gap), 2);
+  margin-right: math.div(units($theme-step-indicator-segment-gap), 2);
   max-width: units("card-lg");
   min-height: units($theme-step-indicator-segment-height);
   position: relative;
@@ -340,15 +342,15 @@ $step-indicator-counter-size-sm: 3;
 }
 
 .usa-step-indicator--no-labels {
-  margin-left: units($theme-step-indicator-segment-gap) / -2;
-  margin-right: units($theme-step-indicator-segment-gap) / -2;
+  margin-left: math.div(units($theme-step-indicator-segment-gap), -2);
+  margin-right: math.div(units($theme-step-indicator-segment-gap), -2);
 
   .usa-step-indicator__segment {
     // Remove extra counter margin
     margin-top: 0;
     // Add gap between segments
-    margin-left: units($theme-step-indicator-segment-gap) / 2;
-    margin-right: units($theme-step-indicator-segment-gap) / 2;
+    margin-left: math.div(units($theme-step-indicator-segment-gap), 2);
+    margin-right: math.div(units($theme-step-indicator-segment-gap), 2);
     &:before {
       // Don't show counters
       display: none;
@@ -373,12 +375,12 @@ $step-indicator-counter-size-sm: 3;
 }
 
 .usa-step-indicator--center {
-  margin-left: units($theme-step-indicator-segment-gap) / -2;
-  margin-right: units($theme-step-indicator-segment-gap) / -2;
+  margin-left: math.div(units($theme-step-indicator-segment-gap), -2);
+  margin-right: math.div(units($theme-step-indicator-segment-gap), -2);
 
   .usa-step-indicator__segment {
-    margin-left: units($theme-step-indicator-segment-gap) / 2;
-    margin-right: units($theme-step-indicator-segment-gap) / 2;
+    margin-left: math.div(units($theme-step-indicator-segment-gap), 2);
+    margin-right: math.div(units($theme-step-indicator-segment-gap), 2);
 
     &:before {
       @if $theme-step-indicator-counter-gap == 0 {
