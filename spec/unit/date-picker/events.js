@@ -219,12 +219,12 @@ EVENTS.keydownShiftPageDown = (el = document.activeElement) => {
 };
 
 /**
- * send a mousemove event
+ * send a mouseover event
  * @param {HTMLElement} el the element to sent the event to
  *
  */
-EVENTS.mousemove = el => {
-  const evt = new MouseEvent("mousemove", {
+EVENTS.mouseover = el => {
+  const evt = new MouseEvent("mouseover", {
     bubbles: true,
     cancelable: true
   });

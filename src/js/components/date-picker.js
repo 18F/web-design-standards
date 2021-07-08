@@ -1685,12 +1685,12 @@ const handleShiftPageDownFromDate = adjustCalendar((date) => addYears(date, 1));
 const handleShiftPageUpFromDate = adjustCalendar((date) => subYears(date, 1));
 
 /**
- * display the calendar for the mousemove date.
+ * display the calendar for the mouseover date.
  *
- * @param {MouseEvent} event The mousemove event
+ * @param {MouseEvent} event The mouseover event
  * @param {HTMLButtonElement} dateEl A date element within the date picker component
  */
-const handleMousemoveFromDate = (dateEl) => {
+const handleMouseoverFromDate = (dateEl) => {
   if (dateEl.disabled) return;
 
   const calendarEl = dateEl.closest(DATE_PICKER_CALENDAR);
@@ -1802,10 +1802,10 @@ const handlePageUpFromMonth = adjustMonthSelectionScreen(() => 0);
 /**
  * update the focus on a month when the mouse moves.
  *
- * @param {MouseEvent} event The mousemove event
+ * @param {MouseEvent} event The mouseover event
  * @param {HTMLButtonElement} monthEl A month element within the date picker component
  */
-const handleMousemoveFromMonth = (monthEl) => {
+const handleMouseoverFromMonth = (monthEl) => {
   if (monthEl.disabled) return;
   if (monthEl.classList.contains(CALENDAR_MONTH_FOCUSED_CLASS)) return;
 
@@ -1916,10 +1916,10 @@ const handlePageDownFromYear = adjustYearSelectionScreen(
 /**
  * update the focus on a year when the mouse moves.
  *
- * @param {MouseEvent} event The mousemove event
+ * @param {MouseEvent} event The mouseover event
  * @param {HTMLButtonElement} dateEl A year element within the date picker component
  */
-const handleMousemoveFromYear = (yearEl) => {
+const handleMouseoverFromYear = (yearEl) => {
   if (yearEl.disabled) return;
   if (yearEl.classList.contains(CALENDAR_YEAR_FOCUSED_CLASS)) return;
 
@@ -2131,15 +2131,15 @@ const datePickerEvents = {
 };
 
 if (!isIosDevice()) {
-  datePickerEvents.mousemove = {
+  datePickerEvents.mouseover = {
     [CALENDAR_DATE_CURRENT_MONTH]() {
-      handleMousemoveFromDate(this);
+      handleMouseoverFromDate(this);
     },
     [CALENDAR_MONTH]() {
-      handleMousemoveFromMonth(this);
+      handleMouseoverFromMonth(this);
     },
     [CALENDAR_YEAR]() {
-      handleMousemoveFromYear(this);
+      handleMouseoverFromYear(this);
     },
   };
 }

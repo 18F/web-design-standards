@@ -672,12 +672,12 @@ const handleUpFromListOption = (event) => {
 };
 
 /**
- * Select list option on the mousemove event.
+ * Select list option on the mouseover event.
  *
- * @param {MouseEvent} event The mousemove event
+ * @param {MouseEvent} event The mouseover event
  * @param {HTMLLIElement} listOptionEl An element within the combo box component
  */
-const handleMousemove = (listOptionEl) => {
+const handleMouseover = (listOptionEl) => {
   const isCurrentlyFocused = listOptionEl.classList.contains(
     LIST_OPTION_FOCUSED_CLASS
   );
@@ -773,9 +773,9 @@ const comboBox = behavior(
         displayList(this);
       },
     },
-    mousemove: {
+    mouseover: {
       [LIST_OPTION]() {
-        handleMousemove(this);
+        handleMouseover(this);
       },
     },
   },

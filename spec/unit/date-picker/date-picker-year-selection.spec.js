@@ -136,7 +136,7 @@ describe("date picker component year selection", () => {
   });
 
   it("should update the focus when moving over a non-selected valid year", () => {
-    EVENTS.mousemove(
+    EVENTS.mouseover(
       getCalendarEl().querySelector(
         '.usa-date-picker__calendar__year[data-value="2022"]'
       )

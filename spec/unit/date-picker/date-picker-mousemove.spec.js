@@ -41,7 +41,7 @@ describe("date picker component mouse move selection", () => {
       "focuses correct date"
     );
 
-    EVENTS.mousemove(
+    EVENTS.mouseover(
       getCalendarEl().querySelector(
         '.usa-date-picker__calendar__date[data-day="26"]'
       )
@@ -65,7 +65,7 @@ describe("date picker component mouse move selection", () => {
       "focuses correct date"
     );
 
-    EVENTS.mousemove(
+    EVENTS.mouseover(
       getCalendarEl().querySelector(
         '.usa-date-picker__calendar__date[data-day="19"]'
       )
@@ -90,7 +90,7 @@ describe("date picker component mouse move selection", () => {
       "focuses correct date"
     );
 
-    EVENTS.mousemove(
+    EVENTS.mouseover(
       getCalendarEl().querySelector(
         '.usa-date-picker__calendar__date[data-day="20"]'
       )
