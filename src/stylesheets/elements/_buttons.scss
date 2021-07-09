@@ -2,6 +2,9 @@
 
 $button-context: "Button";
 $button-stroke: inset 0 0 0 units($theme-button-stroke-width);
+$button-inverse-color: $theme-link-reverse-color;
+$button-inverse-hover-color: $theme-link-reverse-hover-color;
+$button-inverse-active-color: $theme-link-reverse-active-color;
 
 // Buttons
 
@@ -45,143 +48,50 @@ $button-stroke: inset 0 0 0 units($theme-button-stroke-width);
   &:not([disabled]).usa-focus {
     outline-offset: units(0.5);
   }
-
-  &:disabled {
-    @include button-disabled;
-  }
 }
 
-.usa-button--accent-cool {
-  @include set-text-and-bg("accent-cool", $context: $button-context);
+@each $color, $tokens in $all-project-colors {
+  // Disabled and Emergency families don't have enough colors for variants.
+  @if $color != "disabled" and $color != "emergency" {
+    $hover-color: next-token($color, "darker");
+    $active-color: next-token($hover-color, "darker");
 
-  &:visited {
-    @include set-text-and-bg("accent-cool", $context: $button-context);
-  }
-
-  &:hover,
-  &.usa-button--hover {
-    @include set-text-and-bg("accent-cool-dark", $context: $button-context);
-  }
-
-  &:active,
-  &.usa-button--active {
-    @include set-text-and-bg("accent-cool-darker", $context: $button-context);
-  }
-}
-
-.usa-button--accent-warm {
-  @include set-text-and-bg("accent-warm", $context: $button-context);
-
-  &:visited {
-    @include set-text-and-bg("accent-warm", $context: $button-context);
-  }
-
-  &:hover,
-  &.usa-button--hover {
-    @include set-text-and-bg("accent-warm-dark", $context: $button-context);
-  }
-
-  &:active,
-  &.usa-button--active {
-    @include set-text-and-bg("accent-warm-darker", $context: $button-context);
-  }
-}
-
-.usa-button--outline {
-  background-color: color("transparent");
-  box-shadow: $button-stroke color("primary");
-  color: color("primary");
-
-  &:visited {
-    color: color("primary");
-  }
-
-  &:hover,
-  &.usa-button--hover {
-    background-color: color("transparent");
-    box-shadow: $button-stroke color("primary-dark");
-    color: color("primary-dark");
-  }
-
-  &:active,
-  &.usa-button--active {
-    background-color: color("transparent");
-    box-shadow: $button-stroke color("primary-darker");
-    color: color("primary-darker");
-  }
-
-  &.usa-button--inverse {
-    $button-inverse-color: $theme-link-reverse-color;
-    $button-inverse-hover-color: $theme-link-reverse-hover-color;
-    $button-inverse-active-color: $theme-link-reverse-active-color;
-
-    box-shadow: $button-stroke color("base-lighter");
-    color: color($button-inverse-color);
-
-    &:visited {
-      color: color($button-inverse-color);
-    }
-
-    &:hover,
-    &.usa-button--hover {
-      box-shadow: $button-stroke color($button-inverse-hover-color);
-      color: color($button-inverse-hover-color);
-    }
-
-    &:active,
-    &.usa-button--active {
-      background-color: transparent;
-      box-shadow: $button-stroke color($button-inverse-active-color);
-      color: color($button-inverse-active-color);
-    }
-
-    &.usa-button--unstyled {
-      @include button-unstyled;
-      color: color($button-inverse-color);
+    %usa-button-#{$color},
+    .usa-button--#{$color} {
+      @include set-text-and-bg($color, $context: $button-context);
 
       &:visited {
-        color: color($button-inverse-color);
+        @include set-text-and-bg($color, $context: $button-context);
       }
 
       &:hover,
       &.usa-button--hover {
-        color: color($button-inverse-hover-color);
+        @include set-text-and-bg($hover-color, $context: $button-context);
       }
 
       &:active,
       &.usa-button--active {
-        color: color($button-inverse-active-color);
+        @include set-text-and-bg($active-color, $context: $button-context);
       }
+    }
+
+    %usa-button-outline-#{$color},
+    .usa-button--outline.usa-button--#{$color} {
+      @include button-outline($color);
     }
   }
 }
 
-.usa-button--base {
-  @include set-text-and-bg("base", $context: $button-context);
-
-  &:hover,
-  &.usa-button--hover {
-    @include set-text-and-bg("base-dark", $context: $button-context);
-  }
-
-  &:active,
-  &.usa-button--active {
-    @include set-text-and-bg("base-darker", $context: $button-context);
-  }
+.usa-button--outline {
+  @extend %usa-button-outline-primary;
 }
 
-.usa-button--secondary {
-  @include set-text-and-bg("secondary", $context: $button-context);
-
-  &:hover,
-  &.usa-button--hover {
-    @include set-text-and-bg("secondary-dark", $context: $button-context);
-  }
-
-  &:active,
-  &.usa-button--active {
-    @include set-text-and-bg("secondary-darker", $context: $button-context);
-  }
+.usa-button--inverse {
+  @include button-outline(
+    $button-inverse-color,
+    $button-inverse-hover-color,
+    $button-inverse-active-color
+  );
 }
 
 .usa-button--big {
@@ -190,16 +100,16 @@ $button-stroke: inset 0 0 0 units($theme-button-stroke-width);
   padding: units(2) units(3);
 }
 
+.usa-button:disabled,
 .usa-button--disabled {
   @include button-disabled;
 }
 
 .usa-button--outline-disabled,
-.usa-button--outline-inverse-disabled,
-.usa-button--outline:disabled,
-.usa-button--outline-inverse:disabled,
-.usa-button--outline-inverse:disabled {
+.usa-button--outline:disabled {
   background-color: color("transparent");
+  box-shadow: $button-stroke color("disabled");
+  color: color("disabled");
 
   &:hover,
   &.usa-button--hover,
@@ -209,13 +119,10 @@ $button-stroke: inset 0 0 0 units($theme-button-stroke-width);
   &.usa-focus {
     background-color: color("transparent");
     border: 0;
+    box-shadow: $button-stroke color("disabled");
+    color: color("disabled");
   }
-}
 
-.usa-button--outline-disabled,
-.usa-button--outline:disabled {
-  box-shadow: $button-stroke color("disabled");
-  color: color("disabled");
   &.usa-button--inverse {
     background-color: transparent;
     box-shadow: $button-stroke color("base");
@@ -225,4 +132,26 @@ $button-stroke: inset 0 0 0 units($theme-button-stroke-width);
 
 .usa-button--unstyled {
   @include button-unstyled;
+
+  &.usa-button--outline {
+    @include button-unstyled;
+  }
+
+  &.usa-button--outline.usa-button--inverse {
+    color: color($button-inverse-color);
+
+    &:visited {
+      color: color($button-inverse-color);
+    }
+
+    &:hover,
+    &.usa-button--hover {
+      color: color($button-inverse-hover-color);
+    }
+
+    &:active,
+    &.usa-button--active {
+      color: color($button-inverse-active-color);
+    }
+  }
 }

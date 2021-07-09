@@ -1,0 +1,34 @@
+@mixin button-outline(
+  $default-color,
+  $hover-color: false,
+  $active-color: false
+) {
+  // Defaults in case hover and active aren't passed.
+  $color-dark: next-token($default-color, "darker");
+  $color-darker: next-token($color-dark, "darker");
+
+  $hover-color: if($hover-color, $hover-color, $color-dark);
+  $active-color: if($active-color, $active-color, $color-darker);
+
+  background-color: color("transparent");
+  box-shadow: $button-stroke color($default-color);
+  color: color($default-color);
+
+  &:visited {
+    color: color($default-color);
+  }
+
+  &:hover,
+  &.usa-button--hover {
+    background-color: color("transparent");
+    box-shadow: $button-stroke color($hover-color);
+    color: color($hover-color);
+  }
+
+  &:active,
+  &.usa-button--active {
+    background-color: color("transparent");
+    box-shadow: $button-stroke color($active-color);
+    color: color($active-color);
+  }
+}

@@ -5,41 +5,119 @@ variants:
   - name: secondary
     context:
       category: alternate
-      label: Secondary buttons
+      label: Secondary button
       classes: "usa-button--secondary"
+
+  - name: secondary-outline
+    context:
+      category: alternate
+      label: Outline secondary button
+      classes: "usa-button--secondary usa-button--outline"
 
   - name: accent-cool
     context:
       category: alternate
-      label: Accent cool buttons
+      label: Accent cool button
       classes: "usa-button--accent-cool"
+
+  - name: accent-cool-outline
+    context:
+      category: alternate
+      label: Outline accent cool button
+      classes: "usa-button--accent-cool usa-button--outline"
 
   - name: accent-warm
     context:
       category: alternate
-      label: Accent warm buttons
+      label: Accent warm button
       classes: "usa-button--accent-warm"
+
+  - name: accent-warm-outline
+    context:
+      category: alternate
+      label: Outline accent warm button
+      classes: "usa-button--accent-warm usa-button--outline"
 
   - name: base
     context:
       category: alternate
-      label: Gray buttons
+      label: Gray button
       classes: "usa-button--base"
+
+  - name: base-outline
+    context:
+      category: alternate
+      label: Outline gray button
+      classes: "usa-button--base usa-button--outline"
 
   - name: outline
     context:
       category: outline
-      label: outline buttons
+      label: Outline primary button
       classes: "usa-button--outline"
 
   - name: outline-inverse
     context:
       category: outline-inverse
-      label: outline inverse buttons
+      label: Outline inverse button
       classes: "usa-button--outline usa-button--inverse"
+
+  - name: info
+    context:
+      category: "info"
+      label: Info button
+      classes: "usa-button--info"
+
+  - name: info-outline
+    context:
+      category: alternate
+      label: Outline info button
+      classes: "usa-button--info usa-button--outline"
+
+  - name: error
+    context:
+      category: "error"
+      label: Error button
+      classes: "usa-button--error"
+
+  - name: error-outline
+    context:
+      category: alternate
+      label: Outline error button
+      classes: "usa-button--error usa-button--outline"
+
+  - name: warning
+    context:
+      category: "warning"
+      label: Warning button
+      classes: "usa-button--warning"
+
+  - name: warning-outline
+    context:
+      category: alternate
+      label: Outline warning button
+      classes: "usa-button--warning usa-button--outline"
+
+  - name: success
+    context:
+      category: "success"
+      label: Success button
+      classes: "usa-button--success"
+
+  - name: success-outline
+    context:
+      category: alternate
+      label: Outline success button
+      classes: "usa-button--success usa-button--outline"
 
   - name: big
     context:
       category: "big"
       label: Big button
       classes: "usa-button--big"
+
+  - name: big-outline
+    context:
+      category: alternate
+      label: Outline big button
+      classes: "usa-button--big usa-button--outline"
