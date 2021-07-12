@@ -1,11 +1,11 @@
 @mixin format-input {
-  & + [class$="__label"]::before {
+  & + [class*="__label"]::before {
     @content;
   }
 }
 
 @mixin format-label {
-  & + [class$="__label"] {
+  & + [class*="__label"] {
     @content;
   }
 }
