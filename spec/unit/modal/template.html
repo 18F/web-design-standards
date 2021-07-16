@@ -5,33 +5,29 @@
 <div id="other-content">
 </div>
 
-<div id="original-container">
-  <div>
-    <a id="open-button1" href="#modal" class="usa-button" aria-controls="modal" data-open-modal>Open modal</a>
-    <button id="open-button2" type="button" class="usa-button" aria-controls="modal" data-open-modal>Open modal</button>
-    <div class="usa-modal" id="modal" aria-labelledby="modalheading" aria-describedby="describe">
-      <div class="usa-modal__content">
-        <div class="usa-modal__main">
-          <h2 class="usa-modal__heading" id="modal-sm-heading">You have unsaved changes</h2>
-          <div id="describe" class="usa-prose">
-            <p>Your changes will be lost if you leave this page without saving. Are you sure you want to continue?</p>
-          </div>
+<a id="open-button1" href="#modal" class="usa-button" aria-controls="modal" data-open-modal>Open modal</a>
+<button id="open-button2" type="button" class="usa-button" aria-controls="modal" data-open-modal>Open modal</button>
+<div class="usa-modal" id="modal" aria-labelledby="modalheading" aria-describedby="describe">
+  <div class="usa-modal__content">
+    <div class="usa-modal__main">
+      <h2 class="usa-modal__heading" id="modal-sm-heading">You have unsaved changes</h2>
+      <div id="describe" class="usa-prose">
+        <p>Your changes will be lost if you leave this page without saving. Are you sure you want to continue?</p>
+      </div>
 
-          <div class="usa-modal__footer">
-            <ul class="usa-button-group">
-              <li class="usa-button-group__item">
-                <button type="button" class="usa-button" data-close-modal>Continue</button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <button id="close-button" class="usa-button usa-modal__close" aria-label="close this window"  data-close-modal>
-          <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-            <use xlink:href="{{ uswds.path }}/img/sprite.svg#close"></use>
-          </svg>
-          Close
-        </button>
+      <div class="usa-modal__footer">
+        <ul class="usa-button-group">
+          <li class="usa-button-group__item">
+            <button type="button" class="usa-button" data-close-modal>Continue</button>
+          </li>
+        </ul>
       </div>
     </div>
+    <button id="close-button" class="usa-button usa-modal__close" aria-label="close this window"  data-close-modal>
+      <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+        <use xlink:href="{{ uswds.path }}/img/sprite.svg#close"></use>
+      </svg>
+      Close
+    </button>
   </div>
 </div>

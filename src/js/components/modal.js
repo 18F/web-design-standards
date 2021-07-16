@@ -12,20 +12,19 @@ const WRAPPER_CLASSNAME = `${MODAL_CLASSNAME}-wrapper`;
 const OPENER_ATTRIBUTE = "data-open-modal";
 const CLOSER_ATTRIBUTE = "data-close-modal";
 const FORCE_ACTION_ATTRIBUTE = "data-force-action";
+const NON_MODAL_HIDDEN_ATTRIBUTE = `data-modal-hidden`;
 const MODAL = `.${MODAL_CLASSNAME}`;
 const INITIAL_FOCUS = `.${WRAPPER_CLASSNAME} *[data-focus]`;
 const CLOSE_BUTTON = `${WRAPPER_CLASSNAME} *[${CLOSER_ATTRIBUTE}]`;
 const OPENERS = `*[${OPENER_ATTRIBUTE}][aria-controls]`;
 const CLOSERS = `${CLOSE_BUTTON}, .${OVERLAY_CLASSNAME}:not([${FORCE_ACTION_ATTRIBUTE}])`;
+const NON_MODALS = `body > *:not(.${WRAPPER_CLASSNAME}):not([aria-hidden])`;
+const NON_MODALS_HIDDEN = `[${NON_MODAL_HIDDEN_ATTRIBUTE}]`;
 
 const ACTIVE_CLASS = "usa-js-modal--active";
 const PREVENT_CLICK_CLASS = "usa-js-no-click";
 const VISIBLE_CLASS = "is-visible";
 const HIDDEN_CLASS = "is-hidden";
-
-const nonModals = document.querySelectorAll(
-  `body > *:not(${MODAL}):not([aria-hidden])`
-);
 
 let modal;
 
@@ -148,15 +147,17 @@ function toggleModal(event) {
     openFocusEl.focus();
 
     // Hides everything that is not the modal from screen readers
-    for (let i = 0; i < nonModals.length; i += 1) {
-      nonModals[i].setAttribute("aria-hidden", "true");
-    }
+    document.querySelectorAll(NON_MODALS).forEach((nonModal) => {
+      nonModal.setAttribute("aria-hidden", "true");
+      nonModal.setAttribute(NON_MODAL_HIDDEN_ATTRIBUTE, "");
+    });
   } else if (!safeActive && menuButton && returnFocus) {
     // The modal window is closed.
     // Non-modals now accesible to screen reader
-    for (let i = 0; i < nonModals.length; i += 1) {
-      nonModals[i].removeAttribute("aria-hidden");
-    }
+    document.querySelectorAll(NON_MODALS_HIDDEN).forEach((nonModal) => {
+      nonModal.removeAttribute("aria-hidden");
+      nonModal.removeAttribute(NON_MODAL_HIDDEN_ATTRIBUTE);
+    });
 
     // Focus is returned to the opener
     returnFocus.focus();
